@@ -119,3 +119,37 @@ when duplicates occur.
 - data/processed/sample_sheet.csv          — 1,231 files → patient map
 - data/processed/data_flow_table.csv       — ب۲ flow table
 - data/processed/analysis_sample_list.csv  — final ~1,083 patients
+
+## 8. Gene panel and analytic table (Phase 1, Block 3)
+
+### Gene panel (pre-justified, not data-selected)
+| Gene | Role |
+|---|---|
+| ESR1  | Estrogen receptor α — ER+ subtype |
+| PGR   | Progesterone receptor — PR+ subtype |
+| ERBB2 | HER2 — HER2+ subtype |
+| MKI67 | Ki-67 proliferation marker |
+| PCNA  | Alternative proliferation marker (Phase-5 sensitivity) |
+| GAPDH | Housekeeping control (sanity check) |
+
+### Extraction
+For each patient's single Primary Tumor STAR-Counts file, extracted:
+- `tpm_unstranded` (normalized expression)
+- `unstranded` (raw counts)
+Only 3 of 9 columns loaded per file (memory-safe).
+
+### Sanity checks (all passed)
+- Missing TPM per gene: 0 across all 6 genes (1,083 patients)
+- GAPDH TPM min = 161 (all > 0; housekeeping passes)
+- GAPDH TPM range: 161 – 18,447 (realistic variation)
+
+### Analytic table
+- File: `data/processed/analysis_table.csv`
+- Shape: 1,083 rows × 173 columns (158 clinical + 15 expression)
+- Unit: one row per patient
+- Key: `cases.case_id` (unique; verified)
+- Merge: `patient` INNER JOIN `expression` on `cases.case_id = case_id`,
+  `validate="one_to_one"`, **0 rows lost**
+- Saved artifacts:
+  - `data/processed/expression_panel.csv` — 1,083 × 15
+  - `data/processed/analysis_table.csv`    — 1,083 × 173
