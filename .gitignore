@@ -1,0 +1,76 @@
+# ─────────────────────────────────────────────
+# Python
+# ─────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# ─────────────────────────────────────────────
+# Virtual environments
+# ─────────────────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+.conda/
+.python-version
+
+# ─────────────────────────────────────────────
+# Jupyter
+# ─────────────────────────────────────────────
+.ipynb_checkpoints/
+.virtual_documents/
+.nbconvert/
+
+# ─────────────────────────────────────────────
+# Data — raw downloads are NOT committed.
+# Reconstructable from data/README.md +
+# gdc_manifest_rnaseq.txt.
+# ─────────────────────────────────────────────
+data/raw/*
+!data/raw/.gitkeep
+*.tar.gz
+
+# ─────────────────────────────────────────────
+# OS
+# ─────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ─────────────────────────────────────────────
+# IDEs / editors
+# ─────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.bak
+~$*
+
+# ─────────────────────────────────────────────
+# R (in case R is used later)
+# ─────────────────────────────────────────────
+.Rhistory
+.RData
+.Rproj.user/
+*.rds
+*.rda
+
+# ─────────────────────────────────────────────
+# Misc
+# ─────────────────────────────────────────────
+.gdc-client/
+*.log
