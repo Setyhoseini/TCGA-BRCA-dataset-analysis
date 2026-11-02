@@ -1,0 +1,8 @@
+Step,Count,Definition
+Clinical table (processed),1096,1 row per patient
+RNA-seq files (raw),1231,1 file per sample
+RNA-seq unique samples,1226,unique sample_id
+RNA-seq unique patients,1095,unique case_id
+Patients in BOTH clinical & RNA-seq,1093,intersection
+Patients with exactly 1 primary tumor,1084,the analytic candidate pool
+Final analytic sample,1083,clinical ∩ exactly-1-primary-tumor

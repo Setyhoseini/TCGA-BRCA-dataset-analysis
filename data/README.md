@@ -72,4 +72,50 @@ Excluded via .gitignore (reconstructable from this README):
 - .venv/
 - .ipynb_checkpoints/
 
-gdc_manifest_rnaseq.txt IS committed (small; reproducibility record).
+## 7. RNA-seq sample sheet and data-flow (Phase 1, Block 2)
+
+### Sample sheet
+- Built from GDC API: https://api.gdc.cancer.gov/files
+- 1,231 file records → 1,226 unique sample_ids (5 sample_ids have
+  multiple aliquots) → 1,095 unique patients.
+- Saved: data/processed/sample_sheet.csv
+
+### Sample type breakdown
+| sample_type | count |
+|---|---|
+| Primary Tumor | 1,111 |
+| Solid Tissue Normal | 113 |
+| Metastatic | 7 |
+
+### Data-flow table (Path B, ب۲)
+| Step | Count |
+|---|---|
+| Clinical patients (processed) | 1,096 |
+| RNA-seq files (raw) | 1,231 |
+| RNA-seq unique samples | 1,226 |
+| RNA-seq unique patients | 1,095 |
+| Patients in BOTH clinical & RNA-seq | 1,093 |
+| Patients with ≥1 primary tumor | 1,095 |
+| Patients with exactly 1 primary tumor | 1,084 |
+| Final analytic sample (clinical ∩ exactly-1-primary-tumor) | ~1,083 |
+
+### One-sample-per-patient rule (documented, Phase 1)
+**Rule A**: Use the patient's single Primary Tumor sample.
+- Patients with exactly 1 primary tumor: 1,084
+- Patients with >1 primary tumor: 11 → **excluded** from Phase 1
+  (documented; to be revisited as a Phase-5 sensitivity check using
+  Rule B: keep earliest `diagnosis_id`).
+- RNA-seq-only patients (no clinical): 2 → excluded
+- Clinical-only patients (no RNA-seq): 3 → excluded
+- **Final N ≈ 1,083**
+
+### One-sample-per-sample rule (for the 5 duplicate files)
+Sample_ids with multiple aliquot files: 5. Because the analytic unit is
+the patient (one primary-tumor file per patient), this does not affect
+the final sample. The first file per (case_id, sample_type) is retained
+when duplicates occur.
+
+### Saved artifacts
+- data/processed/sample_sheet.csv          — 1,231 files → patient map
+- data/processed/data_flow_table.csv       — ب۲ flow table
+- data/processed/analysis_sample_list.csv  — final ~1,083 patients
