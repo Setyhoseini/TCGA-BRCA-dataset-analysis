@@ -25,6 +25,7 @@ The repository follows standard data science reproducibility practices:
 │   └── 01_first_look.ipynb # Phase 1: Data audit, cleaning, and descriptive plots
 ├── figures/                # Saved plots from the notebook
 └── reports/                # Phase outputs (PDF reports)
+```
 
 ## 3. Environment Setup
 To recreate the environment and run the code:
@@ -36,6 +37,7 @@ source .venv/Scripts/activate  # On Windows Git Bash
 
 # 2. Install dependencies
 pip install -r requirements.txt
+```
 
 ## 4. Data Reconstruction
 Large raw data files (RNA-seq and clinical TSVs) are **not** committed to this repository due to size constraints. 
