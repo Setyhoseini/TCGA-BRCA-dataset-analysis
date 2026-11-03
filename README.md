@@ -1,9 +1,9 @@
 # TCGA-BRCA: MKI67 Expression Across Tumor Stages
 
-**GitHub Repository:** [https://github.com/Setyhoseini/TCGA-BRCA-dataset-analysis.git](https://github.com/Setyhoseini/TCGA-BRCA-dataset-analysis.git)
+GitHub Repository: [https://github.com/Setyhoseini/TCGA-BRCA-dataset-analysis.git](https://github.com/Setyhoseini/TCGA-BRCA-dataset-analysis.git)  
 **Course:** Statistics — Fall 1405  
 **Project Path:** ب (TCGA-BRCA multi-omic)  
-**Author:** Setayesh Hoseini  
+**Author:** Setayesh Hoseini 
 
 ## 1. Project Overview
 This project investigates whether **MKI67** (a marker of cellular proliferation) mRNA expression is associated with AJCC pathologic tumor stage in breast cancer, and whether this association persists after adjusting for age at diagnosis. The analysis uses multi-omic data from The Cancer Genome Atlas (TCGA-BRCA), combining clinical data with RNA-seq gene expression.
